@@ -1,0 +1,85 @@
+MIT Intro to CS with Python
+
+Unit 1 Lesson 8
+***************************
+
+Binary representations of base 10 decimals
+
+n binary digits can represent 2**n different numbers
+
+Everything a computer does is in binary
+
+Switch: a physical device that is either on or off
+
+in decimal 1/8 = 0.125 = 1 * 10**-1 + 2 * 10**-2 + 5 * 10**-3
+
+in binary 1/8 = 1 * 10**-3 or 0.001 
+
+0.1 in decimal = 1 * 10**-1
+The binary representation goes on forever, 0.0001100110011....
+1/16 + 1/32 + 1/256 + 1/512 + 1/4096 + 1/8192
+It approaches 1/10 as num digs approaches infinity
+
+So non 1/2**n decimal fractions are actually approximations
+
+repr(int/float) returns the binary representation of a float/int
+
+Don't test floating point 'whole' numbers arrived at through arithmetic
+for equality with integers. 
+
+An example based on the lecture:
+
+total = 0.0
+for x in range(10):
+    total += .1
+
+print 1 == total # This prints False
+print abs(total - 1) < 0.001 # This prints True
+
+
+Debugging
+
+Goal is not to eliminate one bug quickly, rather to move towards a bug-free program
+
+print statements are better than debuggers
+
+We use print statements to find the exact step where something went wrong
+
+Search for bugs using binary(bissection?) search
+insert a print statement halfway through the program to see cut search-space in half.
+
+Question to ask: How could it have produced the result it did?
+1.) Study the data:
+look at program text & test results
+2.) Make a hypothesis about what went wrong.
+3.) Design and run a repeatable experiment.
+Experiment must have potential to refute the hypothesis.
+
+Find smaller/st input for which program fails
+
+No such thing as 'THE' bug.
+
+Start with outermost function.
+
+Create a test driver/harness which tests functions.
+It's entire purpose is to test for bugs.
+
+As part of print statement, print what should be printed
+
+Approximately half the code a pro writes is for testing/debugging
+
+
+RECITATION 
+
+For many problems recursion and iteration are substitutable
+Ex. multiplication and finding roots can be done both ways.
+
+???Idiom???
+
+Floats are inexact but consistent
+
+???IEEE 754???
+
+Pseudo-Code: Half English Half Code. basically brainstorming
+
+Edge Case: An extreme case. Unlikely/incorrect input, etc.

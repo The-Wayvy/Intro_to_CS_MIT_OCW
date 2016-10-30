@@ -1,0 +1,130 @@
+MIT Into to CS with Python
+
+Unit 1 Lecture 5 
+**************************
+
+Data structures for amassing objects: Tuples, Lists, Dictionaries.
+
+            Mutable    Immutable 
+         -------------------------
+         |           |           |
+Ordered  |   List    |   Tuple   |
+         |-----------------------|
+	 |           |           | 
+Unordered| Dictionary|   Sets    | 
+          ------------------------
+
+A slice is a subsequence of a list/tuple
+
+append adds one object, extend can add several
+
+reassigning is not the same as mutating
+If you print an append function, you get None. Sideffects don't stuff, just modify an object.
+
+Identifier = variable name
+
+"We can do various things, and we'll get some stuff." - Guttag
+
+!!!Object mutation/revaluation vs variable reassignment!!! can get weird
+
+A = 'lala'
+B = [A, A] #A is just the current name we have given the object 'lala', A has no monopoly on this object.
+A = 'cabbage'
+print B # This will print ['lala', 'lala']
+
+A = ['lala']
+B = [A, A]
+A = ['cabbage']
+print B # This will print [['lala'], ['lala']]
+
+A = ['lala']
+B = [A, A]
+A[0] = 'cabbage' # A[0] = revalues the object, it doesn't reassign A
+print B # This will print [['cabbage'],['cabbage']]
+#Here the ['lala'] bound to A and the two ['lala']'s in B are the same object.
+
+# On the other hand, if A is modified, then B = [A, A] and the A's in B, and so B itself, is updated.
+
+B is bound to the objects represented by A. Reassignment of A binds it to new objects, but B continues to be bound to the old objects. Mutation of A modifies the object to which it (and, by chain, B) are bound, So the value B is bound to changes.
+
+However
+A = ['lala']
+B = [['lala'], ['lala']]
+A[0] = 'cabbage'
+print B 
+# Will print [['lala'],['lala']]
+# The ['lala'] assigned to A and the ['lala'] in B are clones. A[0] = modifies the former but not the latter.
+
+L1 = [2]
+L2 = [L1, L1]
+print 'L2 =', L2 # this prints [[2], [2]]
+L1[0] = 3
+print 'L2 =', L2 # this prints [[3], [3]] 
+L2[0] = 'a'
+print 'L2 =', L2 # this prints ['a', [3]] 
+
+L1 = [2]
+print 'L2 =', L2 # this prints ['a', [3]] 
+L2 = L1 # We bind L2 to the object which L1 is bound to
+L2[0] = 'a'
+print 'L1 =', L1 # This prints ['a'] because L2[0] = modified the object to which L1 is attached.
+print 'L2 =', L2 # This also prints ['a'] since L2 is attached to the object that we modified with L2[0]
+
+variablename[index] = new-value is a method for modifying objects
+variable = new-value is a method for binding objects to names.
+
+L1 = [2]
+L2 = L1[:] #We bind L2 to an object identical to that which L1 is bound to.
+L2[0] = 'a'
+print 'L2 =', L2 # This prints ['a']
+print 'L1 =', L1 # This prints [2]
+
+# L1 and L1[:] are bound to different objects. Clones.
+
+A = ['lala']
+B = [A, A, A[:]]
+# At this point B = [['lala'], ['lala'], ['lala']], A is out of the picture. However, the first two items in B are the same object that A is bound to. So A[x] = can modify the first two objects in B.
+print B # this prints [['lala'], ['lala'], ['lala']]
+A[0] = 'alah'
+print B # this prints ['alah', 'alah', 'lala']
+
+
+???What is a slice? Is it a variable? Is it a method????????
+
+
+Scope is different for mutable and non-mutable objects
+
+??? WTF ???
+
+x = 5
+def square(y):
+    y = y**2
+    print y
+square(x)
+print x
+# This prints 25, and 5. 
+
+A = [0]
+def appender(L):
+    for x in range(1, 3):
+        L.append(x)
+    print L
+adder(A)
+print A
+# This prints [0, 1, 2] and [0, 1, 2]
+# Even without a 'global' declaration, global variables bound to mutable objects can be changed within a function. 
+???Why can we reassign without using the global declaration???
+??? Aren't main.A and adder.A completely different???
+
+A = [0]
+def remake(L):
+    L = ['catz']
+    print L
+remake(A)
+print A
+# This prints ['catz'] and [0] reassignment at different scopes doesn't transcend the scope in which the reassignment occurs.
+
+Alias: one object with multiple names.
+Clone: A = List[:], creates an object identical to List, but not List. This way we can modify an object identical to list without touching List.
+
+Dictionaries are unordered, indices(keys) need not be integers, can also be strings/floats/tuples. A set of key, value pairs. Keys are immutable.

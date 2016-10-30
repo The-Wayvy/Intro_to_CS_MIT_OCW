@@ -1,0 +1,83 @@
+MIT Intro to CS with Python
+
+Unit 1 Lecture 4 Notes
+****************************
+
+Functions provide 2 things:
+Functions break code into reusable coherent pieces
+Decomposition: Creates structure, allows for modules which are self-contained and reusable, breaks the program into parts, ie. structure. 
+Abstraction: Suppresses detail. Allows for reusability/economy of text.
+
+A function has:
+Name: function name
+Parameters: the arguments
+Body: the code that does stuff
+
+If you print without returning any value then you get None.
+
+You can define a function within another function definition.
+
+Assigning a variable inside a function, whose name is the same as a variable name outside the function, does not change the value of the variable outside the function. To change the value of outer variable you must call it within the function using global.
+
+An identically named function parameter and global variable are unrelated.
+
+Formal Parameter: a function argument's name in the definition
+Actual Parameter: A variable-name/value combo, inside or outside.
+in general
+Actual = a name-value or value.
+Formal = a name
+
+Scope: a mapping from names to objects. Different within/out a function
+
+!!! assert !!!
+assert is a function which is always followed by a Boolean expression
+if the expression is True, nothing happens
+if the expression is False, your program stops running
+
+You can check types. Ex. type(2) == int, returns True
+
+First thing an interpreter does is run though function names and variable assignments outside of functions.
+This is called the: 'main' scope.
+If variable in the main scope depends on a function call then the function is called
+
+When running a function, we enter a 'function' scope.
+
+A variable in the main scope can have the same name as a function parameter. The variable can be used as an argument for the function. Here the variable's value is assigned to the parameter's name. Within the function, further modification to the parameter is allowed. Although it shares a name with the main scope variable, the main scope variable cannot be altered by anything that happens within the function. The names exist on different scopes. When a main scope variable is used as a function parameter the value is copied and assigned to the parameter name, but the main scope variable is not transported into the function or in any way involved in functional happenings. If a function calls a function or a function definition defines a second function, the same situation exists. Multiple scopes, stack frames. When you leave a function, the function scope variables are gone. 
+main.x, f.x, g.x, etc. where f and g are functions containing variables x.
+
+A stack also known as LIFO: Last In First Out refers to scopes. The innermost scope is accessed last, exited first.
+Which stack frames exist depends on which functions are active.
+
+assert False is a hackish way to inspect your program's stack frames at any point in the progress of the program.
+
+Strings are non-scalar, like a pseudo-list of chars.
+
+Slice makes a (sub)copy of the object
+
+object.find(fjd) returns the index of fjd in object.
+If find fails it returns -1
+
+Remember, a tuple with no objects = (), a tuple with one object = (x,)
+
+RECITATION NOTES
+
+help(function name) will tell you about the function
+
+Remember that you can use negative indexes for tuples/lists
+
+Aliasing: making a copy of an entire list/tuple using slice[:]
+
+Tuples are immutable but you can merge tuples if you assign the merge to a variable.  
+
+ton = tuple of numbers
+
+string.replace('jaldkj', 'alkdfjl', x) replaces the first x instances of jaldkj with alkdfjl
+
+dir(object) returns all methods associated with an object.
+
+A variable defined in the main scope is called a global variable
+
+A variable defined in a function or in the call space is a local variable
+
+To reference a global variable with a function, global funk-name
+If you modify the global variable its value changes in the main scope as well.
